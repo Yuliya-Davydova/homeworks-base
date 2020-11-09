@@ -23,12 +23,6 @@ public class AppTest {
         int max = App.max(0, 1); // вызов класса
         assertEquals(1, max);
 
-    }
-
-    @Test
-    public void fail() {
-        int max = App.max(1, 0); // вызов класса
-        assertEquals(0, max);
 
     }
 }
