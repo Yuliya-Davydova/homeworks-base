@@ -21,7 +21,7 @@ public class App {
             int mass[][] = new int[n][m];
             for (int i = 0; i < n; i++) { //Заполнение массива случайными числами от 0 до 50
                 for (int j = 0; j < m; j++) {
-                    mass[i][j] = random.nextInt(50);
+                    mass[i][j] = random.nextInt(9);
                 }
             }
             for (int i = 0; i < n; i++) {// вывод массива в консоль
@@ -30,22 +30,14 @@ public class App {
                 }
                 System.out.println();
             }
-            for (int i = 0; i < n; i++) {// вывод главной диагонали массива в консоль
-                for (int j = 0; j < m; j++) {
-                    if (mass[i] == mass[j]) {
-                        System.out.print(mass[i][j]);
-                    }
-                }
-            }
-            for (int i = n - 1; i < n; i++) { // вывод чисел под диагональю, оказалось выводит только нижний левый угол(((
-                for (int j = m - 1 - i; j >= 0; j--) {
-                    System.out.print(mass[i][j] + " ");
-                }
-            }
             System.out.println();
             for (int i = 0; i < n; i++) { // вывод главной диагонали и всех чисел под диагональю
                 for (int j = 0; j <= i; j++) {
                     if (mass[i][j] % 2 == 1) {
+                        System.out.print(mass[i][j] + " ");
+                    }
+                    if (mass[i][j] % 2 == 0) {
+                        mass[i][j] = 0;
                         System.out.print(mass[i][j] + " ");
                     }
                 }
