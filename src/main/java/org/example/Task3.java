@@ -9,7 +9,12 @@ public class Task3 {
         int n = 3;
 
         int mass[][] = new int[n][m];
-
+        for (int i = 0; i < n; i++) { //выводим пустой массив
+            for (int j = 0; j < m; j++) {
+                System.out.print(mass[i][j] + " ");
+            }
+            System.out.println();
+        }
         for (int step = 0; step < 9; step++) {
             // ввести координату
             int A = Integer.parseInt(scanner.nextLine());
@@ -25,8 +30,6 @@ public class Task3 {
             if (mass[A][B] == 0) {
                 // вводим Х\О в ячейку
                 mass[A][B] = metka;
-            } else {
-                System.out.println("Ошибка! Ячейка занята.");
             }
             // выводим матрицу
             for (int i = 0; i < n; i++) {
@@ -35,7 +38,7 @@ public class Task3 {
                 }
                 System.out.println();
             }
+        }
             // проверить комбинации выигрыша
         }
     }
-}
