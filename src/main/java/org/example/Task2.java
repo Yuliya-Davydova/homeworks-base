@@ -31,7 +31,7 @@ public class Task2 {
                 }
                 System.out.println();
             }
-            for (int i = 0; i < n; i++) {// вывод массива в консоль
+            for (int i = 0; i < n; i++) {
                 for (int j = 0; j < m; j++) {
                     int transp = mass[i][j];
                     mass[i][j] = mass[j][i];
@@ -46,6 +46,9 @@ public class Task2 {
                 }
                 System.out.println();
             }
+        } else {
+            System.out.println("Ошибка! Введите числа, чтобы получилась квадратная матрица: M должно равняться N");
         }
     }
 }
+
