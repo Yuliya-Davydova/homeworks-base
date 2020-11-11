@@ -30,17 +30,24 @@ public class App {
                 }
                 System.out.println();
             }
-            for (int i = 0; i < n; i++) {// вывод диагонали массива в консоль
+            for (int i = 0; i < n; i++) {// вывод главной диагонали массива в консоль
                 for (int j = 0; j < m; j++) {
                     if (mass[i] == mass[j]) {
                         System.out.print(mass[i][j]);
                     }
                 }
             }
-            for (int i = n - 1; i < n; i++) {
+            for (int i = n - 1; i < n; i++) { // вывод чисел под диагональю, оказалось выводит только нижний левый угол(((
                 for (int j = m - 1 - i; j >= 0; j--) {
                     System.out.print(mass[i][j]);
                 }
+            }
+            System.out.println();
+            for (int i = 0; i < n; i++) { // вывод главной диагонали и всех чисел под диагональю
+                for (int j = 0; j <= i; j++) {
+                    System.out.print(mass[i][j] + " ");
+                }
+                System.out.println();
             }
         } else {
             System.out.println("Ошибка! Введите числа, чтобы получилась квадратная матрица: M должно равняться N");
