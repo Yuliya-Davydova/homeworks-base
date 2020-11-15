@@ -1,62 +1,31 @@
 package Comp;
 
 public class Computer {
+
     private String proc;
     private int operativ;
     private int disk;
-    private int resourse;
+    private int resource;
 
     public Computer(String pr, int op, int di, int res) {
         proc = pr;
         operativ = op;
         disk = di;
-        resourse = res;
+        resource = res;
     }
 
-    public void setProc(String proc) {
-        if (proc.length() <= 3) {
-            this.proc = proc;
+    public void displayInfo() {
+        System.out.printf(" Процессор: %s \n Оперативная память: %s \n Жесткий диск: %s \n Ресурс: %s \n", proc, operativ, disk, resource);
+    }
+
+    public void turnOn() {
+
+        if (resource > 0) {
+            resource = resource - 1;
+            System.out.println("Включен");
         } else {
-            System.out.println("Нельзя!");
+            System.out.println("Превышен лимит ресурса включения. Компбьютер сгорел.");
         }
-    }
-
-    public int summ() {
-        return operativ + disk + resourse;
-    }
-
-    public String getProc() {
-        return proc;
-    }
-
-    public int getDisk() {
-        return disk;
-    }
-
-    public int getOperativ() {
-        return operativ;
-    }
-
-    public int getResourse() {
-        return resourse;
-    }
-
-    public static void main(String[] args) {
-        Computer param = new Computer("My", 8, 254, 100);
-
-        System.out.println(param.getProc());
-
-        param.setProc("Proc");
-
-        System.out.println(param.getProc());
-
-        param.setProc("Pro");
-
-        System.out.println(param.getProc());
-
-        int Name = param.summ();
-
-        System.out.println(Name);
     }
 }
 
