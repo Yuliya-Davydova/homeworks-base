@@ -6,32 +6,8 @@ public class Transport {
     int weight;
     String brand;
 
-    static class LandTransport {
-        int numberWhels;
-        int fuel;
-
-        static class PassengerCar {
-            String bodyType;
-            int numberOfPassengers;
-        }
-
-        static class FreightTransport {
-            int liftingCapacity;
-        }
+    public double PowerKVt() {
+        return power * 0.74;
     }
 
-    static class AirTransport {
-        int wingspan;
-        int runwayLength;
-
-        static class CivilTransport {
-            int numberOfPassengers;
-            boolean businessClass;
-        }
-
-        static class Military {
-            boolean bailout;
-            int numberOfMissiles;
-        }
-    }
 }

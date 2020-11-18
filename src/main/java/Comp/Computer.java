@@ -26,6 +26,7 @@ public class Computer {
         } else {
             System.out.println("Превышен лимит ресурса включения. Компбьютер сгорел.");
         }
+
     }
 }
 
