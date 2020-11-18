@@ -5,7 +5,7 @@ public class FreightTransport extends LandTransport {
 
     public String param() {
         return ("Грузоподъемность (т): " + liftingCapacity + ", количество колес (шт): " + numberWhels +
-                ", расход топлива (л/100км): " + fuel + ", мощность (л.с.): " + power + "Мощность (кВт): " + PowerKVt() +
+                ", расход топлива (л/100км): " + fuelConsumptionPer100km + ", мощность (л.с.): " + power + "Мощность (кВт): " + PowerKVt() +
                 ", максимальная скорость (км/ч)" + speed + "масса (кг): " + weight + ", марка: " + brand);
     }
 }
