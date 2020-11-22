@@ -42,9 +42,9 @@ public class Run {
         System.out.println("Цена: " + robot3.getPrice());
 
         if (robot1.getPrice() > robot2.getPrice() && robot1.getPrice() > robot3.getPrice()) {
-            System.out.println("Робот Sony дороже, чем роботы Toshiba и Samsumg.");
+            System.out.println("Робот Sony дороже, чем роботы Toshiba и Samsung.");
         } else if (robot2.getPrice() > robot1.getPrice() && robot2.getPrice() > robot3.getPrice()) {
-            System.out.println("Робот Tosiba дороже, чем роботы Sony и Samsumg.");
+            System.out.println("Робот Toshiba дороже, чем роботы Sony и Samsung.");
         } else {
             System.out.println("Робот Samsung дороже, чем роботы Sony и Toshiba.");
         }
