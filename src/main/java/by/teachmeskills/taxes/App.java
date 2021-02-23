@@ -2,7 +2,7 @@ package by.teachmeskills.taxes;
 
 
 import by.teachmeskills.taxes.model.*;
-import by.teachmeskills.taxes.model.laws.BelarusRegionCoefficient;
+import by.teachmeskills.taxes.model.laws.RegionTaxCoefficient;
 import by.teachmeskills.taxes.model.laws.ComplexTaxLaw;
 import by.teachmeskills.taxes.model.laws.GenderTaxCoefficient;
 import by.teachmeskills.taxes.model.laws.PercentInRangeLaw;
@@ -24,7 +24,7 @@ public class App extends HttpServlet {
     private final List<Salary> salaries = new ArrayList<>();
 
     public App() {
-        this.basePayInBelarus = 26;
+        this.basePayInBelarus = 14000;
         TaxLaw incomeTaxLaw = new ComplexTaxLaw(List.of(
                 new PercentInRangeLaw(9, 0, 240 * basePayInBelarus),
                 new PercentInRangeLaw(15, 240 * basePayInBelarus, 600 * basePayInBelarus),
@@ -32,7 +32,33 @@ public class App extends HttpServlet {
                 new PercentInRangeLaw(25, 840 * basePayInBelarus, 1080 * basePayInBelarus),
                 new PercentInRangeLaw(30, 1080 * basePayInBelarus, Double.MAX_VALUE)
         ));
-        this.law = new BelarusRegionCoefficient(new GenderTaxCoefficient(incomeTaxLaw));
+        this.law = new ComplexTaxLaw(
+                incomeTaxLaw,
+                new RegionTaxCoefficient("Минск", 5, incomeTaxLaw),
+                new RegionTaxCoefficient("Витебск", -5, incomeTaxLaw),
+                new RegionTaxCoefficient("Гродно", -5, incomeTaxLaw),
+                new RegionTaxCoefficient("Гомель", -5, incomeTaxLaw),
+                new RegionTaxCoefficient("Бресть", -5, incomeTaxLaw),
+                new RegionTaxCoefficient("Могилёв", -5, incomeTaxLaw),
+                new GenderTaxCoefficient(Gender.Female, -5, incomeTaxLaw)
+        );
+    }
+
+    public static void main(String[] args) {
+        new App().run();
+    }
+
+    public void run() {
+        Worker worker = new SimpleWorker("", "", Gender.Female, "Минск");
+        Salary superSalary = new SimpleSalary(worker, 9100000, law);
+        for (Tax tax : superSalary.taxes()) {
+            System.out.println(tax);
+        }
+        System.out.println();
+        System.out.println("Salary: " + superSalary.total());
+        double taxes = superSalary.taxes().stream().mapToDouble(t -> t.amount()).sum();
+        System.out.println("Total taxes: " + taxes);
+        System.out.println("On hands: " + (superSalary.total() - taxes));
     }
 
     /**

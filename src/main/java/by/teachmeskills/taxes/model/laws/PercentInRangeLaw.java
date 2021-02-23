@@ -29,4 +29,13 @@ public class PercentInRangeLaw implements TaxLaw {
             return List.of(new SimpleTax(0, this));
         }
     }
+
+    @Override
+    public String toString() {
+        return "PercentInRangeLaw{" +
+                "percent=" + percent +
+                ", minSum=" + minSum +
+                ", maxSum=" + maxSum +
+                '}';
+    }
 }

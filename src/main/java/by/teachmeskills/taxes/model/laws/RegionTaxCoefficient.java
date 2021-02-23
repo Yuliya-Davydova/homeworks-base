@@ -1,6 +1,5 @@
 package by.teachmeskills.taxes.model.laws;
 
-import by.teachmeskills.taxes.model.Gender;
 import by.teachmeskills.taxes.model.Salary;
 import by.teachmeskills.taxes.model.Tax;
 import by.teachmeskills.taxes.model.TaxLaw;
@@ -8,20 +7,20 @@ import by.teachmeskills.taxes.model.TaxLaw;
 import java.util.Collections;
 import java.util.List;
 
-public class GenderTaxCoefficient implements TaxLaw {
+public class RegionTaxCoefficient implements TaxLaw {
 
-    private final Gender gender;
+    private final String region;
     private final int coefficient;
     private final TaxLaw law;
 
 
     /**
-     * @param gender      Пол работника
-     * @param coefficient Коэффициент на пол, от -100 до 100
+     * @param region      Название региона
+     * @param coefficient Коэффициент региона, от -100 до 100
      * @param law         На какие налоги применять поправку
      */
-    public GenderTaxCoefficient(Gender gender, int coefficient, TaxLaw law) {
-        this.gender = gender;
+    public RegionTaxCoefficient(String region, int coefficient, TaxLaw law) {
+        this.region = region;
         this.coefficient = coefficient;
         this.law = law;
     }
@@ -31,7 +30,7 @@ public class GenderTaxCoefficient implements TaxLaw {
     public List<Tax> calculateTaxesFor(Salary salary) {
         List<Tax> taxes = law.calculateTaxesFor(salary);
         double amount = taxes.stream().mapToDouble(t -> t.amount()).sum();
-        if (gender.equals(salary.worker().gender())) {
+        if (region.equals(salary.worker().region())) {
             return List.of(new SimpleTax(amount * coefficient / 100, this));
         } else {
             return Collections.emptyList();
@@ -40,12 +39,9 @@ public class GenderTaxCoefficient implements TaxLaw {
 
     @Override
     public String toString() {
-        return "GenderTaxCoefficient{" +
-                "gender=" + gender +
+        return "RegionTaxCoefficient{" +
+                "region='" + region + '\'' +
                 ", coefficient=" + coefficient +
                 '}';
     }
 }
-
-
-

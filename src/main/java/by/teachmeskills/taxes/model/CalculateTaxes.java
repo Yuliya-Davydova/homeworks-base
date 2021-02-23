@@ -24,7 +24,7 @@ public class CalculateTaxes {
         System.out.println();
         System.out.println("Salary: " + superSalary.total());
         double taxes = superSalary.taxes().stream().mapToDouble(t -> t.amount()).sum();
-        System.out.println("Total by.teachmeskills.taxes: " + taxes);
+        System.out.println("Total taxes: " + taxes);
         System.out.println("On hands: " + (superSalary.total() - taxes));
     }
 }

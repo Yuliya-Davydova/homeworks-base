@@ -5,7 +5,7 @@ import by.teachmeskills.taxes.model.Tax;
 import by.teachmeskills.taxes.model.TaxLaw;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
 public class ComplexTaxLaw implements TaxLaw {
@@ -13,8 +13,8 @@ public class ComplexTaxLaw implements TaxLaw {
     private final List<TaxLaw> laws;
 
 
-    public ComplexTaxLaw(TaxLaw law) {
-        this(Collections.singletonList(law));
+    public ComplexTaxLaw(TaxLaw... law) {
+        this(Arrays.asList(law));
     }
 
     public ComplexTaxLaw(List<TaxLaw> laws) {
